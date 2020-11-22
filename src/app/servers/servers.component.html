@@ -8,9 +8,13 @@
 <!-- <p>{{serverCreationStatus}}</p>  -->
 
 <label>Server Name</label>
-<input type="text" class="form-control" (input)="onUpdateServerName($event)"> <!-- $event is a reserved keyword which we can use in the template to showcase event binding. This allows us to capture the data of the event.-->
+<!-- the (input) is an event that is called upon when something is being inputted in the text field -->
+<!--<input type="text" class="form-control" (input)="onUpdateServerName($event)">  $event is a reserved keyword which we can use in the template to showcase event binding. This allows us to capture the data of the event.-->
+<!-- This is the example of two-way data binding-->
+<input type="text" class="form-control" [(ngModel)] = "serverName"> <!-- This will trigger on the input event and update the value of the serverName in our component automatically-->
 <!-- In angular, the events can be binded to elements using the () operator as below-->
 <button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()"> Add Server</button> <!-- Square brackets indicate to angular that we are using property binding and that we want to dynamically bind some property to the elements-->
+<!-- We need to import the FormsModule to enable two-way data binding-->
 <!-- <p [innerText]="allowNewServer">{{allowNewServer}}</p> This is a classic case of how string interpolation {{}} and property binding can be used in a single tag. -->
 <p>{{serverCreationStatus}}</p>
 <app-server></app-server>
