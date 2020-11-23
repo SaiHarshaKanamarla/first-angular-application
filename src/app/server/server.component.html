@@ -1,6 +1,19 @@
-<p> {{"Server"}} with ID {{serverId}} is {{getServerStatus()}} </p>
+<p [ngStyle]="{backgroundColor: getColor()}" 
+   [ngClass]="{online: serverStatus === 'Online'}">
+   {{"Server"}} with ID {{serverId}} is {{getServerStatus()}}
+</p>
 <!-- 
 This is the concept of string interpolation. Here, we can access dynamic information using {{}} symbol.
 This is the string interpolatin syntax. We can write a typescript expression witin these curly braces 
 The only condition is that anything we put in must be resolved to a string at the end
+-->
+
+<!-- Here are we are using directives in conjunction with    property binding. As we know for property binding, we use [].
+So, we want the ngStyle directive to update on the p tag as a property. Also, in property binding, the resultant should be 
+able to be resolved to a string. So, getColor() returns a color which is set to the backgroundColor property
+-->
+
+<!-- ngClass - this is used to add styling to a set of classes. This takes in like a key,value pair where key is the name of the class
+and values are the conditions that determine whether a css class should be added or not. In the .ts file, we added color:white for a 
+class called online. So with ngClass, we need to set a condition whether that .online class must be reflected or not. 
 -->

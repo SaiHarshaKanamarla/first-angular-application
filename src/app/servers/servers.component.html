@@ -16,6 +16,18 @@
 <button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()"> Add Server</button> <!-- Square brackets indicate to angular that we are using property binding and that we want to dynamically bind some property to the elements-->
 <!-- We need to import the FormsModule to enable two-way data binding-->
 <!-- <p [innerText]="allowNewServer">{{allowNewServer}}</p> This is a classic case of how string interpolation {{}} and property binding can be used in a single tag. -->
-<p>{{serverCreationStatus}}</p>
-<app-server></app-server>
-<app-server></app-server>
+<!-- <p>{{serverCreationStatus}}</p> -->
+
+<!-- This is the use of angular directives ngIf and else
+Here, we give a * before ngIf because it is a structural directive. This is a way of telling angular that it changes the structure of the DOM.
+For the "else" condition, we give a marker. This marker will be used to identify the code block that must run for the alternate case.
+below, as long as serverCreated variable is true, first p is printed. Else, the second p is printed.
+-->
+
+<!-- Unlike structural directives, attribute directives don't add or remove elements. They onlt change on the element they were placed on -->
+
+<p *ngIf="serverCreated; else noServer">Server was created. Name is {{serverName}}</p>
+<ng-template #noServer>
+    <p>No Server was created</p>
+</ng-template>
+<app-server *ngFor="let server of servers"></app-server>
